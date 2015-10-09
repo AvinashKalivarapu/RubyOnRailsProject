@@ -1,0 +1,46 @@
+<h1>Admin Palace</h1>
+
+<h2>List of Users</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="padding-right:6em">U_ID</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+      	<td style="padding-right:6em"><%= @count %> </td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', edit_user_registration_path(user) %></td>
+        <td><%= link_to 'Edit/Destroy', edit_user_registration_path(user) %></td>
+      </tr>
+        <% @count = @count + 1 %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to "Add Your Images" , new_picture_path %>
+
+<h2>Images</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="padding-right:6em">P_ID</th>
+      <th>Pic</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pics.each do |pic| %>
+      <tr>
+      	<td style="padding-right:6em"><%= pic.id %></td>
+		<td><%= image_tag('/admin/serve/' + pic.id.to_s, :class => 'images_admin') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
